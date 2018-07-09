@@ -43,20 +43,24 @@ destinations = chain.from_iterable(list(neighbours.values()))
 end = min(destinations)
 
 frontier = PriorityQueue()
-frontier.put(start, 0)
+frontier.put((0, start))
 came_from = {}
 cost_so_far = {}
 came_from[start] = None
 cost_so_far[start] = 0
 
 while not frontier.empty():
-	current = frontier.get()
+	current = frontier.get()[1]
 	for n in neighbours[current]:
 		new_cost = cost_so_far[current] + costs[(current, n)]
+
 		if n not in cost_so_far or new_cost < cost_so_far[n]:
 			cost_so_far[n] = new_cost
 			priority = new_cost
-			frontier.put(n, priority)
+			frontier.put((priority, n))
 			came_from[n] = current
-	  
-print("%.2f" % cost_so_far[end])
+
+if (end not in cost_so_far) or (cost_so_far[end] >= 7200):
+	print("7200")
+else:
+	print("%.2f" % cost_so_far[end])

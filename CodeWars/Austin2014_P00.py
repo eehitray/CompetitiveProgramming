@@ -1,0 +1,1 @@
+print("Team 1 is ready for HP CodeWars 17!")
