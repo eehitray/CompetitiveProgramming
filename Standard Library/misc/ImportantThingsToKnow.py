@@ -10,6 +10,7 @@ a = [1,2,3,4]
 3)
 from copy import copy
 b = copy(a)
+4) b = [x for x in a]
 
 WRONG:
 b = a -> modification to either results in modification to other
