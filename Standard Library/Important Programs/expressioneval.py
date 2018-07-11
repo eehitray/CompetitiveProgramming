@@ -4,7 +4,14 @@ import re
 
 def splitter(exp):
     '''splits string into tokens'''
-    return re.findall(r'[+-/()\*\^]|\d+', exp)
+    temp = re.findall(r'[+-/()\*\^]|\d+', exp)
+    res = [x for x in temp]
+    #time to handle unary minus
+    for index, atom in enumerate(temp):
+        if atom == '-' and not atom.isnumeric():
+            res.insert(index, '0')
+
+    return res
 
 
 def infix_postfix(tokens):
