@@ -132,14 +132,12 @@ partition(...)
  words start with title case characters, all remaining cased characters have lower case
  translate -> seems super useful. to use:
 
- from string import maketrans
-
- table = maketrans('123', 'abc'): maps 1->a, 2->b and so on
+ table = str.maketrans('123', 'abc'): maps 1->a, 2->b and so on
  or
- table = maketrans(dictionary): self explanatory
+ table = str.maketrans(dictionary): self explanatory
  or
- table = maketrans('123', 'abc', 'xyz'): maps 1->a, 2->b and so on. maps x,y,z to None.
+ table = str.maketrans('123', 'abc', 'xyz'): maps 1->a, 2->b and so on. maps x,y,z to None.
 
  now:
 
- str.translate(table) returns a copy where characters are translated. 1 becomes a, and so on. chars mapped to None are removed.
+ string.translate(table) returns a copy where characters are translated. 1 becomes a, and so on. chars mapped to None are removed.
