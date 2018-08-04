@@ -23,14 +23,14 @@ def getNeighbours(i, j):
 	return indices
 
 frontier = PriorityQueue()
-frontier.put((0, 0), 0)
+frontier.put((0, (0,0)))
 cameFrom = {}
 costSoFar = {}
 cameFrom[(0, 0)] = None
 costSoFar[(0, 0)] = 0
 
 while not frontier.empty():
-	current = frontier.get()
+	current = frontier.get()[1]
 
 	if current == (3,3):
 		break
@@ -40,7 +40,7 @@ while not frontier.empty():
 		newCost = costSoFar[current] + getCostTo(nextLoc[0], nextLoc[1])
 		if nextLoc not in costSoFar or newCost < costSoFar[nextLoc]:
 			costSoFar[nextLoc] = newCost
-			frontier.put(nextLoc, newCost)
+			frontier.put((newCost, nextLoc))
 			cameFrom[nextLoc] = current
 
 locs = [(3,3)]
